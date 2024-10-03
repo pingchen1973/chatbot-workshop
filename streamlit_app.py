@@ -12,7 +12,7 @@ if "messages" not in st.session_state.keys():  # Initialize the chat messages hi
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": "Ask me a question about Rabindranath Tagore!",
+            "content": "Ask me a question about your life difficulties!",
         }
     ]
 
