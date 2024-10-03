@@ -4,9 +4,9 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.embeddings.gemini import GeminiEmbedding
 
 
-st.set_page_config(page_title="Chat with an expert on the works of Rabindranath Tagore", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
-st.title("Chat with an export on the works of Rabindranath Tagore")
-st.info("Check out the full tutorial to build this app in our [blog post](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)", icon="📃")
+st.set_page_config(page_title="寻找人生幸福的答案", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.title("我是大白，有什么我可以帮你的？")
+st.info("及时回答人生困境的大白 in our [blog post](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)", icon="📃")
 
 if "messages" not in st.session_state.keys():  # Initialize the chat messages history
     st.session_state.messages = [
@@ -28,11 +28,18 @@ def load_data():
     Settings.llm = Gemini(
         model="models/gemini-1.5-flash",
         temperature=0.2,
-        system_prompt="""You are a an expert on the work of Rabindrath Tagore, and you love to use quotations from his booksto illustrate your points.
-        Answer the question using the provided documents, which contain relevant excerpts from the work of Rabindrath Tagore.
-        The context for all questions is the work of Rabindrath Tagore. Whenver possible, include a quotation from the provided excerpts of his work to illustrate your point.
-        Respond using a florid but direct tone, typical of an early modernist writer.
-        Keep your answers under 100 words.""",
+        # system_prompt="""You are a an expert on the work of Rabindrath Tagore, and you love to use quotations from his booksto illustrate your points.
+        # Answer the question using the provided documents, which contain relevant excerpts from the work of Rabindrath Tagore.
+        # The context for all questions is the work of Rabindrath Tagore. Whenver possible, include a quotation from the provided excerpts of his work to illustrate your point.
+        # Respond using a florid but direct tone, typical of an early modernist writer.
+        # Keep your answers under 100 words.""",
+
+        system_prompt="""You are a an expert on human's spiritual growth, and you love to help people in pain to seek hapiness. 
+        Answer the question using the provided documents, which contain relevant excerpts from some spiritual growth books.
+        Whenver possible, include a quotation from the provided excerpts of his work to illustrate your point.
+        Respond using a florid, warm, encouraging but direct tone, typical of an old wise and kind counsellor.
+        Keep your answers under 150 words.""",
+        
         api_key = st.secrets.google_gemini_key,
         safe = [
     {
