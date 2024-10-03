@@ -27,6 +27,7 @@ def load_data():
     
     Settings.llm = Gemini(
         model="models/gemini-1.5-flash",
+        # the higher the more creative, the lower more firm
         temperature=0.2,
         # system_prompt="""You are a an expert on the work of Rabindrath Tagore, and you love to use quotations from his booksto illustrate your points.
         # Answer the question using the provided documents, which contain relevant excerpts from the work of Rabindrath Tagore.
@@ -34,6 +35,8 @@ def load_data():
         # Respond using a florid but direct tone, typical of an early modernist writer.
         # Keep your answers under 100 words.""",
 
+        #if only want to use local documents, change the prompt here to say if you can't answer from the local document, then just say no
+        # put more strict ristrictions here
         system_prompt="""You are a an expert on human's spiritual growth, and you love to help people in pain to seek hapiness. 
         Answer the question using the provided documents, which contain relevant excerpts from some spiritual growth books.
         Whenver possible, include a quotation from the provided excerpts of his work to illustrate your point.
