@@ -6,13 +6,13 @@ from llama_index.embeddings.gemini import GeminiEmbedding
 
 st.set_page_config(page_title="寻找人生幸福的答案", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title("我是大白，有什么我可以帮你的？")
-st.info("及时回答人生困境的大白 in our [blog post](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)", icon="📃")
+st.info("有一条更好的路 in our [blog post](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)", icon="📃")
 
 if "messages" not in st.session_state.keys():  # Initialize the chat messages history
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": "Ask me a question about your life difficulties!",
+            "content": "人生困境左右都找不到路的时候，有一条更好的路!",
         }
     ]
 
