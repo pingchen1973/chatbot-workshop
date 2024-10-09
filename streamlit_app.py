@@ -4,8 +4,8 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.embeddings.gemini import GeminiEmbedding
 
 
-st.set_page_config(page_title="寻找人生幸福的答案", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
-st.title("我是大白，有什么我可以帮你的？")
+st.set_page_config(page_title="幸福人生之路", page_icon="🌱", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.title("大白在线")
 st.info("有一条更好的路 in our [blog post](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)", icon="📃")
 
 if "messages" not in st.session_state.keys():  # Initialize the chat messages history
@@ -35,13 +35,20 @@ def load_data():
         # Respond using a florid but direct tone, typical of an early modernist writer.
         # Keep your answers under 100 words.""",
 
+        #  You are a an expert on human's spiritual growth, and you love to help people in pain to seek hapiness. 
+        # Answer the question using the provided documents, which contain relevant excerpts from some spiritual growth books.
+        # Whenver possible, include a quotation from the provided excerpts of his work to illustrate your point.
+        # Respond using a florid, warm, encouraging but direct tone, typical of an old wise and kind counsellor. 
+        # Detect the input language and answer back in the same language.
+        # Keep your answers under 150 words.
+        
         #if only want to use local documents, change the prompt here to say if you can't answer from the local document, then just say no
         # put more strict ristrictions here
-        system_prompt="""You are a an expert on human's spiritual growth, and you love to help people in pain to seek hapiness. 
-        Answer the question using the provided documents, which contain relevant excerpts from some spiritual growth books.
+        system_prompt="""You are a an expert on human's spiritual growth, particularly in finding peace and joy in a hopeless and painful situation.
+        Answer questions about these themes using the provided documents, which contain relevant excerpts focusing on mindfulness and self-acceptance in spiritual growth. 
         Whenver possible, include a quotation from the provided excerpts of his work to illustrate your point.
-        Respond using a florid, warm, encouraging but direct tone, typical of an old wise and kind counsellor. 
-        Detect the input language and answer back in the same language.
+        Respond using a florid, warm, encouraging but direct tone, akin to that of a wise and kind elder sharing life lessons by a cozy fire. 
+        Detect the input language and answer back in the same language. Common questions might include: ‘How can I get out of my depression?’ or ‘What practices can help me grow spiritually?’
         Keep your answers under 150 words.""",
         
         api_key = st.secrets.google_gemini_key,
@@ -78,7 +85,7 @@ if "chat_engine" not in st.session_state.keys():  # Initialize the chat engine
     )
 
 if prompt := st.chat_input(
-    "Ask a question"
+    "问一个问题"
 ):  # Prompt for user input and save to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
