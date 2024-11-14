@@ -6,7 +6,7 @@ from llama_index.embeddings.gemini import GeminiEmbedding
 
 st.set_page_config(page_title="幸福人生之路", page_icon="🌱", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title("大白在线")
-st.info("有一条更好的路 in our [blog post](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)", icon="📃")
+st.info("有一条更好的路)", icon="📃")
 
 if "messages" not in st.session_state.keys():  # Initialize the chat messages history
     st.session_state.messages = [
